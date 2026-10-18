@@ -1,0 +1,2 @@
+Pega aquí tu archivo de audio (por ejemplo: cancion.mp3, cancion.wav o cancion.m4a).
+Una vez que lo pegues aquí, yo lo conectaré automáticamente con la letra y la barra de reproducción para Abigail.
