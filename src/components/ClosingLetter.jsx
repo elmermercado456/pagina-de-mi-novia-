@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Sparkles, Feather, Check } from 'lucide-react';
+import { Heart, Sparkles, Feather } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { LOVE_DATA } from '../data/content';
 
@@ -50,18 +50,18 @@ export default function ClosingLetter() {
   };
 
   return (
-    <section id="carta" className="py-24 px-4 sm:px-6 relative z-10">
+    <section id="carta" className="py-16 sm:py-24 px-3.5 sm:px-6 relative z-10">
       <div className="max-w-3xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne-400/10 border border-champagne-400/20 text-champagne-300 text-xs uppercase tracking-widest mb-3"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne-400/10 border border-champagne-400/20 text-champagne-300 text-[11px] sm:text-xs uppercase tracking-widest mb-3"
           >
-            <Feather className="w-3.5 h-3.5" />
+            <Feather className="w-3.5 h-3.5 flex-shrink-0" />
             <span>Epílogo & Promesa</span>
           </motion.div>
 
@@ -70,7 +70,7 @@ export default function ClosingLetter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-serif text-3xl sm:text-5xl font-light text-white mb-3"
+            className="font-serif text-2xl sm:text-4xl md:text-5xl font-light text-white mb-2 sm:mb-3 px-2"
           >
             {letter.heading}
           </motion.h2>
@@ -80,32 +80,32 @@ export default function ClosingLetter() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-neutral-400 text-sm font-light italic"
+            className="text-neutral-400 text-xs sm:text-sm font-light italic px-2"
           >
-            Palabras reservadas solo para tus ojos, Abigail.
+            Palabras reservadas solo para tus ojos, {partnerName}.
           </motion.p>
         </div>
 
         {/* Parchment Styled Letter Card */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative glass-card rounded-3xl p-8 sm:p-12 border border-champagne-400/20 shadow-2xl overflow-hidden"
+          className="relative glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-12 border border-champagne-400/20 shadow-2xl overflow-hidden"
         >
           {/* Subtle background vintage gradient glow */}
           <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-champagne-400/10 blur-[80px] pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-rosewood-500/10 blur-[80px] pointer-events-none" />
 
           {/* Letter Content */}
-          <div className="space-y-5 text-neutral-200 font-serif text-base sm:text-lg leading-relaxed sm:leading-loose relative z-10">
+          <div className="space-y-4 sm:space-y-5 text-neutral-200 font-serif text-sm sm:text-lg leading-relaxed sm:leading-loose relative z-10">
             {letter.paragraphs.map((paragraph, idx) => (
               <p
                 key={idx}
                 className={
                   idx === 0
-                    ? 'text-xl sm:text-2xl text-champagne-200 font-semibold italic'
+                    ? 'text-lg sm:text-2xl text-champagne-200 font-semibold italic'
                     : 'text-neutral-300 font-light'
                 }
               >
@@ -115,9 +115,9 @@ export default function ClosingLetter() {
           </div>
 
           {/* Signature Block */}
-          <div className="mt-12 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative z-10">
+          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center sm:items-center justify-between gap-5 relative z-10 text-center sm:text-left">
             <div>
-              <span className="block text-xs uppercase tracking-widest text-neutral-400 mb-1 font-sans">
+              <span className="block text-[11px] sm:text-xs uppercase tracking-widest text-neutral-400 mb-1 font-sans">
                 {letter.signoffNote}
               </span>
               <p className="font-handwriting text-3xl sm:text-4xl text-rosewood-300 tracking-wide">
@@ -126,14 +126,14 @@ export default function ClosingLetter() {
             </div>
 
             {/* Interactive Wax Seal / Heart Button */}
-            <div className="flex items-center gap-3">
+            <div className="w-full sm:w-auto">
               <button
                 onClick={handleSealClick}
-                className="group relative px-5 py-3 rounded-full bg-gradient-to-r from-rosewood-600 to-rosewood-500 hover:from-rosewood-500 hover:to-rosewood-600 text-white text-xs font-semibold uppercase tracking-wider shadow-lg shadow-rosewood-600/30 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 border border-rosewood-400/40"
+                className="w-full sm:w-auto justify-center group relative px-6 py-3.5 rounded-full bg-gradient-to-r from-rosewood-600 to-rosewood-500 hover:from-rosewood-500 hover:to-rosewood-600 text-white text-xs font-semibold uppercase tracking-wider shadow-lg shadow-rosewood-600/30 transition-all active:scale-95 flex items-center gap-2 border border-rosewood-400/40"
               >
-                <Heart className="w-4 h-4 fill-white group-hover:scale-125 transition-transform" />
+                <Heart className="w-4 h-4 fill-white group-hover:scale-125 transition-transform flex-shrink-0" />
                 <span>{sealed ? '¡Amor Eterno Sellado!' : 'Sellar Nuestro Amor'}</span>
-                <Sparkles className="w-3.5 h-3.5 text-champagne-300" />
+                <Sparkles className="w-3.5 h-3.5 text-champagne-300 flex-shrink-0" />
               </button>
             </div>
           </div>

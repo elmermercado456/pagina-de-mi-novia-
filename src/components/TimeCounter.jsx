@@ -82,7 +82,6 @@ export default function TimeCounter() {
   const [timeElapsed, setTimeElapsed] = useState(() => getExactTimeElapsed(LOVE_DATA.startDate));
 
   useEffect(() => {
-    // Si existía un valor en caché previo en localStorage, limpiarlo
     localStorage.removeItem('elmer_abigail_start_date');
 
     const update = () => {
@@ -98,7 +97,7 @@ export default function TimeCounter() {
     {
       label: 'Meses',
       value: timeElapsed.months,
-      subtitle: 'de amor y complicidad',
+      subtitle: 'de complicidad',
       glow: 'from-rosewood-500/25 to-rosewood-600/10',
       badge: 'Meses',
       highlight: true,
@@ -106,21 +105,21 @@ export default function TimeCounter() {
     {
       label: 'Días',
       value: timeElapsed.days,
-      subtitle: 'caminando de la mano',
+      subtitle: 'de la mano',
       glow: 'from-champagne-400/20 to-champagne-500/5',
       badge: 'Días',
     },
     {
       label: 'Horas',
       value: timeElapsed.hours,
-      subtitle: 'escuchando tu voz',
+      subtitle: 'escuchándote',
       glow: 'from-rosewood-400/20 to-rosewood-500/5',
       badge: 'Horas',
     },
     {
       label: 'Minutos',
       value: timeElapsed.minutes,
-      subtitle: 'de miradas cómplices',
+      subtitle: 'de miradas',
       glow: 'from-champagne-300/20 to-champagne-400/5',
       badge: 'Min',
     },
@@ -135,18 +134,18 @@ export default function TimeCounter() {
   ];
 
   return (
-    <section id="tiempo" className="py-24 px-4 sm:px-6 relative z-10">
+    <section id="tiempo" className="py-16 sm:py-24 px-3.5 sm:px-6 relative z-10">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rosewood-500/10 border border-rosewood-500/20 text-rosewood-300 text-xs uppercase tracking-widest mb-3"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rosewood-500/10 border border-rosewood-500/20 text-rosewood-300 text-[11px] sm:text-xs uppercase tracking-widest mb-3"
           >
-            <Clock className="w-3.5 h-3.5" />
+            <Clock className="w-3.5 h-3.5 flex-shrink-0" />
             <span>Nuestra Línea de Tiempo Exacta</span>
           </motion.div>
 
@@ -155,7 +154,7 @@ export default function TimeCounter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-serif text-3xl sm:text-5xl font-light text-white mb-4"
+            className="font-serif text-2xl sm:text-4xl md:text-5xl font-light text-white mb-3 sm:mb-4 px-2"
           >
             Cada Latido a tu Lado Cuenta
           </motion.h2>
@@ -165,7 +164,7 @@ export default function TimeCounter() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-neutral-400 max-w-xl mx-auto text-sm sm:text-base font-light"
+            className="text-neutral-400 max-w-xl mx-auto text-xs sm:text-base font-light px-2"
           >
             El tiempo deja de ser una medida fría cuando se vive contigo: aquí se convierte en música,
             risas y la certeza de haber encontrado mi lugar en el mundo.
@@ -173,15 +172,15 @@ export default function TimeCounter() {
         </div>
 
         {/* 5 Real-time Cards Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 md:gap-5 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-4 md:gap-5 mb-8 sm:mb-10">
           {statCards.map((card, idx) => (
             <motion.div
               key={card.label}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.08, duration: 0.5 }}
-              className={`glass-card glass-card-hover p-5 sm:p-6 rounded-2xl relative overflow-hidden text-center group border border-white/[0.08] ${
+              transition={{ delay: idx * 0.06, duration: 0.5 }}
+              className={`glass-card glass-card-hover p-4 sm:p-6 rounded-2xl relative overflow-hidden text-center group border border-white/[0.08] ${
                 card.isLastOnMobile ? 'col-span-2 sm:col-span-1' : ''
               } ${card.highlight ? 'ring-1 ring-champagne-400/30' : ''}`}
             >
@@ -191,20 +190,20 @@ export default function TimeCounter() {
 
               <div className="relative z-10 flex flex-col items-center">
                 {card.highlight && (
-                  <span className="inline-flex items-center gap-1 text-[10px] uppercase font-semibold text-champagne-300 bg-champagne-400/10 px-2 py-0.5 rounded-full mb-1">
+                  <span className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] uppercase font-semibold text-champagne-300 bg-champagne-400/10 px-2 py-0.5 rounded-full mb-1">
                     <Sparkles className="w-2.5 h-2.5 text-champagne-300" />
                     Cumplemés
                   </span>
                 )}
 
-                <span className="font-serif text-4xl sm:text-5xl lg:text-5xl font-normal text-white group-hover:text-champagne-200 transition-colors tracking-tight font-mono">
+                <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white group-hover:text-champagne-200 transition-colors tracking-tight font-mono">
                   {String(card.value).padStart(2, '0')}
                 </span>
 
-                <h3 className="text-xs uppercase tracking-widest text-rosewood-400 font-semibold mt-2">
+                <h3 className="text-[11px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-rosewood-400 font-semibold mt-1 sm:mt-2">
                   {card.label}
                 </h3>
-                <p className="text-[11px] text-neutral-400 mt-1 font-light italic">
+                <p className="text-[10px] sm:text-[11px] text-neutral-400 mt-0.5 sm:mt-1 font-light italic truncate max-w-full">
                   {card.subtitle}
                 </p>
               </div>
@@ -213,25 +212,25 @@ export default function TimeCounter() {
         </div>
 
         {/* Pill highlight with total accumulated days */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-rosewood-500/20 text-xs text-neutral-300 shadow-sm">
-            <Heart className="w-3.5 h-3.5 text-rosewood-400 fill-rosewood-400" />
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3 mb-6 sm:mb-8 px-2">
+          <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full glass-card border border-rosewood-500/20 text-xs text-neutral-300 shadow-sm text-center">
+            <Heart className="w-3.5 h-3.5 text-rosewood-400 fill-rosewood-400 flex-shrink-0" />
             <span>
-              Total acumulado: <strong className="text-white font-mono">{timeElapsed.totalDays}</strong> días de historia juntos
+              Total acumulado: <strong className="text-white font-mono">{timeElapsed.totalDays}</strong> días juntos
             </span>
           </div>
 
           {timeElapsed.days === 0 ? (
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-rosewood-500/20 to-champagne-400/20 border border-rosewood-400/40 text-xs text-champagne-200 shadow-lg shadow-rosewood-500/10 animate-pulse">
-              <Sparkles className="w-3.5 h-3.5 text-champagne-300" />
+            <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-rosewood-500/20 to-champagne-400/20 border border-rosewood-400/40 text-xs text-champagne-200 shadow-lg shadow-rosewood-500/10 animate-pulse text-center">
+              <Sparkles className="w-3.5 h-3.5 text-champagne-300 flex-shrink-0" />
               <span>
-                ✨ <strong className="text-white font-semibold">¡Hoy es 21!</strong> Feliz cumplemés, cumplimos {timeElapsed.months} hermosos meses juntos ❤️
+                ✨ <strong className="text-white font-semibold">¡Hoy es 21!</strong> Feliz cumplemés, cumplimos {timeElapsed.months} meses ❤️
               </span>
             </div>
           ) : (
             timeElapsed.nextAnniversaryDays > 0 && (
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-champagne-400/20 text-xs text-neutral-300 shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-champagne-300" />
+              <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full glass-card border border-champagne-400/20 text-xs text-neutral-300 shadow-sm text-center">
+                <Sparkles className="w-3.5 h-3.5 text-champagne-300 flex-shrink-0" />
                 <span>
                   Faltan <strong className="text-champagne-200 font-mono">{timeElapsed.nextAnniversaryDays}</strong> {timeElapsed.nextAnniversaryDays === 1 ? 'día' : 'días'} para nuestro {timeElapsed.months + 1}° cumplemés (este 21)
                 </span>
