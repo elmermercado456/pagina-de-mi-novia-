@@ -14,9 +14,28 @@ function addMonthsClamped(date, months) {
   return d;
 }
 
+// Función segura para parsear fechas locales sin ambigüedad de zona horaria en iOS/Safari/Android
+function parseLocalDate(dateInput) {
+  if (dateInput instanceof Date) return dateInput;
+  if (typeof dateInput === 'string') {
+    const parts = dateInput.match(/^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}):(\d{2}))?/);
+    if (parts) {
+      return new Date(
+        Number(parts[1]),
+        Number(parts[2]) - 1,
+        Number(parts[3]),
+        Number(parts[4] || 0),
+        Number(parts[5] || 0),
+        Number(parts[6] || 0)
+      );
+    }
+  }
+  return new Date(dateInput);
+}
+
 // Cálculo exacto del tiempo transcurrido en Meses, Días, Horas, Minutos y Segundos
 function getExactTimeElapsed(startDateStr, now = new Date()) {
-  const start = new Date(startDateStr);
+  const start = parseLocalDate(startDateStr);
   if (isNaN(start.getTime()) || now < start) {
     return { months: 0, days: 0, hours: 0, minutes: 0, seconds: 0, totalDays: 0, nextAnniversaryDays: 0 };
   }
@@ -214,7 +233,7 @@ export default function TimeCounter() {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-champagne-400/20 text-xs text-neutral-300 shadow-sm">
                 <Sparkles className="w-3.5 h-3.5 text-champagne-300" />
                 <span>
-                  Faltan <strong className="text-champagne-200 font-mono">{timeElapsed.nextAnniversaryDays}</strong> {timeElapsed.nextAnniversaryDays === 1 ? 'día' : 'días'} para nuestro 9° cumplemés (este 21)
+                  Faltan <strong className="text-champagne-200 font-mono">{timeElapsed.nextAnniversaryDays}</strong> {timeElapsed.nextAnniversaryDays === 1 ? 'día' : 'días'} para nuestro {timeElapsed.months + 1}° cumplemés (este 21)
                 </span>
               </div>
             )
